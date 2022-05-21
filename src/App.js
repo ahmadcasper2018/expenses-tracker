@@ -1,10 +1,8 @@
-import React from 'react';
+import React , {useState} from 'react';
 
 import NewExpense from './components/Expenses/NewExpense';
 import Expenses from './components/Expenses/Expenses';
-
-const App = () => {
-  const expenses = [
+  const dummyData = [
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -25,9 +23,15 @@ const App = () => {
       date: new Date(2021, 5, 12),
     },
   ];
+const App = () => {
 
+  const[expensesList,setExpensesList] = useState(dummyData);
   const addToExpensesList = expense =>{
-    console.log(expense)
+    setExpensesList(
+        (prevState) =>{
+          return [expense,...prevState];
+        }
+    )
   }
 
   // return React.createElement(
@@ -40,7 +44,7 @@ const App = () => {
   return (
     <div>
       <NewExpense onForward = {addToExpensesList} />
-      <Expenses items={expenses} />
+      <Expenses items={expensesList} />
     </div>
   );
 }
