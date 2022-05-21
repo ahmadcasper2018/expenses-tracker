@@ -26,6 +26,10 @@ const App = () => {
     },
   ];
 
+  const addToExpensesList = expense =>{
+    console.log(expense)
+  }
+
   // return React.createElement(
   //   'div',
   //   {},
@@ -35,10 +39,11 @@ const App = () => {
 
   return (
     <div>
-      <NewExpense />
+      <NewExpense onForward = {addToExpensesList} />
       <Expenses items={expenses} />
     </div>
   );
 }
 
 export default App;
+
